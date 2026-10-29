@@ -1,0 +1,39 @@
+{
+  "name": "virtual-reality-test-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main",
+    "start:dev": "tsc -w -p tsconfig.json",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thunnnnnnn/virtual-reality-test-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thunnnnnnn/virtual-reality-test-api/issues"
+  },
+  "homepage": "https://github.com/Thunnnnnnn/virtual-reality-test-api#readme",
+  "dependencies": {
+    "@nestjs/common": "11.0.1",
+    "@nestjs/core": "11.0.1",
+    "@nestjs/platform-express": "11.0.1",
+    "@prisma/client": "5.22.0",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "12.0.11",
+    "@types/node": "26.6.6",
+    "prisma": "5.22.0",
+    "typescript": "7.0.2"
+  }
+}
