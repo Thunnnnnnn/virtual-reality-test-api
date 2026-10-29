@@ -29,45 +29,4 @@ model TicketQueueEntry {
   phoneNumber        String?
   deviceId           String?
   paymentAccount     String?
-  rankedEntries      RankedEntry[]
-  fanGroups          FanGroup[]
-  excludedEntries    ExcludedEntry[]
-}
-
-model FrontRowUpgradeResult {
-  id              String          @id @default(uuid())
-  createdAt       DateTime        @default(now())
-  winnerId        String?         @unique
-  winner          RankedEntry?    @relation(fields: [winnerId], references: [id])
-  fanGroups       FanGroup[]
-  excludedEntries ExcludedEntry[]
-}
-
-model RankedEntry {
-  id               String                 @id @default(uuid())
-  entryId          String
-  entry            TicketQueueEntry       @relation(fields: [entryId], references: [id])
-  score            Float
-  reasons          String[]
-  wonResult        FrontRowUpgradeResult?
-  representedGroup FanGroup?
-}
-
-model FanGroup {
-  id                String                @id @default(uuid())
-  resultId          String
-  result            FrontRowUpgradeResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
-  entries           TicketQueueEntry[]
-  representativeId  String?               @unique
-  representative    RankedEntry?          @relation(fields: [representativeId], references: [id])
-  connectionReasons String[]
-}
-
-model ExcludedEntry {
-  id       String                @id @default(uuid())
-  resultId String
-  result   FrontRowUpgradeResult @relation(fields: [resultId], references: [id], onDelete: Cascade)
-  entryId  String
-  entry    TicketQueueEntry      @relation(fields: [entryId], references: [id])
-  reason   String
 }
