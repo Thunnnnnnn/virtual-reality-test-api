@@ -5,7 +5,7 @@
     "fanName": "Somchai",
     "ticketValue": "2500",
     "joinedQueueAt": "2026-10-30T10:00:00+07:00",
-    "eventStartsAt": "2026-10-30T20:00:00+07:00",
+    "eventStartsAt": "2026-11-14T20:00:00+07:00",
     "status": "waiting",
     "loyaltyPoints": 100,
     "upgradesLast30Days": 0,
@@ -19,7 +19,7 @@
     "fanId": "fan-002",
     "fanName": "Jane",
     "ticketValue": "3000",
-    "joinedQueueAt": "2026-10-30T09:00:00+07:00",
+    "joinedQueueAt": "2026-10-29T09:00:00+07:00",
     "eventStartsAt": "2026-11-14T20:00:00+07:00",
     "status": "waiting",
     "loyaltyPoints": 80,
@@ -35,7 +35,7 @@
     "fanName": "Somchai Second",
     "ticketValue": "2000",
     "joinedQueueAt": "2026-10-30T11:00:00+07:00",
-    "eventStartsAt": "2026-10-30T20:00:00+07:00",
+    "eventStartsAt": "2026-11-14T20:00:00+07:00",
     "status": "waiting",
     "loyaltyPoints": 150,
     "upgradesLast30Days": 2,
@@ -131,8 +131,8 @@
     "upgradesLast30Days": 1,
     "membership": "vip",
     "phoneNumber": null,
-    "deviceId": null,
-    "paymentAccount": null
+    "deviceId": "device-D",
+    "paymentAccount": "pay-D"
   },
   {
     "id": "entry-010",
@@ -146,7 +146,7 @@
     "upgradesLast30Days": 0,
     "membership": "regular",
     "phoneNumber": null,
-    "deviceId": null,
-    "paymentAccount": null
+    "deviceId": "device-D",
+    "paymentAccount": "pay-D"
   }
 ]
