@@ -4,12 +4,13 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && node --test 'dist/**/*.spec.js'",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/main",
     "start:dev": "nest start --watch",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "prisma db seed"
   },
   "repository": {
     "type": "git",
@@ -39,5 +40,8 @@
     "@types/node": "26.6.6",
     "prisma": "5.22.0",
     "typescript": "6.0.3"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   }
 }
