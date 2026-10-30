@@ -1,29 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTicketQueueEntryDto } from './dto/create-ticket-queue-entry.dto';
 import { UpdateTicketQueueEntryDto } from './dto/update-ticket-queue-entry.dto';
+import { buildFrontRowUpgradeQueue, UpgradeOptions } from './front-row-upgrade';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class TicketQueueEntryService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
-  create(data: CreateTicketQueueEntryDto) {
-    return this.prisma.ticketQueueEntry.create({ data });
+  async create(data: CreateTicketQueueEntryDto) {
+    return await this.prisma.ticketQueueEntry.create({ data });
   }
 
-  findAll() {
-    return this.prisma.ticketQueueEntry.findMany();
+  async findAll() {
+    return await this.prisma.ticketQueueEntry.findMany();
   }
 
-  findOne(id: string) {
-    return this.prisma.ticketQueueEntry.findUniqueOrThrow({ where: { id } });
+  async findOne(id: string) {
+    return await this.prisma.ticketQueueEntry.findUniqueOrThrow({ where: { id } });
   }
 
-  update(id: string, data: UpdateTicketQueueEntryDto) {
-    return this.prisma.ticketQueueEntry.update({ where: { id }, data });
+  async update(id: string, data: UpdateTicketQueueEntryDto) {
+    return await this.prisma.ticketQueueEntry.update({ where: { id }, data });
   }
 
-  remove(id: string) {
-    return this.prisma.ticketQueueEntry.delete({ where: { id } });
+  async remove(id: string) {
+    return await this.prisma.ticketQueueEntry.delete({ where: { id } });
+  }
+
+  async getFrontRowUpgradeResult(now: Date = new Date(), options: UpgradeOptions = {}) {
+    const entries = await this.prisma.ticketQueueEntry.findMany();
+    return buildFrontRowUpgradeQueue(entries, now, options);
   }
 }

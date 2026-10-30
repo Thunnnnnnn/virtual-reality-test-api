@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { CreateTicketQueueEntryDto } from './dto/create-ticket-queue-entry.dto';
 import { UpdateTicketQueueEntryDto } from './dto/update-ticket-queue-entry.dto';
+import { FrontRowUpgradeQueryDto } from './dto/front-row-upgrade-query.dto';
 import { TicketQueueEntryService } from './ticket-queue-entries.service';
 
 @Controller('ticket-queue-entries')
@@ -15,6 +16,15 @@ export class TicketQueueEntryController {
   @Get()
   findAll() {
     return this.service.findAll();
+  }
+
+  @Get('front-row-upgrade-result')
+  getFrontRowUpgradeResult(@Query() query: FrontRowUpgradeQueryDto) {
+    return this.service.getFrontRowUpgradeResult(query.now ? new Date(query.now) : new Date(), {
+      rushHour: query.rushHour,
+      vipHour: query.vipHour,
+      fairQueue: query.fairQueue,
+    });
   }
 
   @Get(':id')
