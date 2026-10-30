@@ -13,10 +13,11 @@ It does not touch the database, `Date.now()` or the input array.
 
 ```bash
 npm install
-cp .env.example .env        # set DATABASE_URL
+cp .env.example .env          # set DATABASE_URL
+docker-compose up -d --build  # set DATABASE_POSTGRES
 npm run prisma:migrate
-npm run prisma:seed         # sample entries
-npm run start:dev           # http://localhost:8080
+npm run prisma:seed           # sample entries
+npm run start:dev             # http://localhost:8080
 ```
 
 `GET /ticket-queue-entries/front-row-upgrade-result` accepts optional query params:
